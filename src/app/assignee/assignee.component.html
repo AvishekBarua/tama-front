@@ -1,0 +1,43 @@
+<div class="container spacer">
+    <div class="row">
+		<div class="col-md-9">
+			<div class="panel panel-primary">
+				<div class="panel-heading"> 
+					<h3 class="panel-title">Asignee</h3>	
+			 	</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label>Name</label>
+						<input type="text"  [(ngModel)]="search_value" />
+						<button class="btn btn-primary" (click)="search()">Search</button>
+						
+					</div>	
+
+					<table class="table table-stripped">
+						<tr>
+							<th>ID</th> <th>Name</th>  <th>Email</th> <th>Joined Date</th> <th>Photo</th>
+						</tr>	
+						<tr *ngFor="let a of assignees?.content">
+							<td>{{a.id}}</td>
+							<td>{{a.name}}</td>
+							<td>{{a.email}}</td>
+							<td>{{a.assignedDate}}</td>
+							<td>{{a.photo}}</td>
+							<td> <a class="clickable" (click)="onEditAssignee(a.id)" >Edit</a></td>
+						</tr>
+					</table>	
+
+					<div class="container">
+						<ul class="nav nav-pills">
+							<li [ngClass]="{'active':i==currentPage}" *ngFor="let p of pages; let i=index">
+								<a class="clickable" (click)=gotoPage(i)> {{i}} </a>
+							</li>
+						</ul>	
+						
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
